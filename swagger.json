@@ -23,8 +23,8 @@
       "/products": {
         "get": {
           "tags": [
-            "GET",
-            "ProductController"
+            "ProductController",
+            "Fetch all products"
           ],
           "summary": "Retrieve all products.",
           "description": "Retrieve all the products from the database.",
@@ -44,8 +44,8 @@
         },
         "put": {
           "tags": [
-            "ProductController",
-            "PUT"
+            "Update product",
+            "ProductController"
           ],
           "summary": "Updates a product.",
           "description": "Updates a product from the database.",
@@ -78,16 +78,6 @@
                 }
               }
             },
-            "200": {
-              "description": "Successfully updated the product.",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDto"
-                  }
-                }
-              }
-            },
             "404": {
               "description": "Product not found.",
               "content": {
@@ -97,12 +87,22 @@
                   }
                 }
               }
+            },
+            "200": {
+              "description": "Successfully updated the product.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
+                  }
+                }
+              }
             }
           }
         },
         "post": {
           "tags": [
-            "POST",
+            "Create product",
             "ProductController"
           ],
           "summary": "Creates a new product.",
@@ -150,8 +150,8 @@
         },
         "patch": {
           "tags": [
-            "ProductController",
-            "PATCH"
+            "Update product fields",
+            "ProductController"
           ],
           "summary": "Partially updates product fields of a product by its Id.",
           "description": "Partially updates product fields of a product identified by the given unique identifier",
@@ -184,22 +184,22 @@
                 }
               }
             },
-            "200": {
-              "description": "Successfully updated the product.",
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "$ref": "#/components/schemas/ProductDto"
-                  }
-                }
-              }
-            },
             "404": {
               "description": "Product not found.",
               "content": {
                 "application/json": {
                   "schema": {
                     "$ref": "#/components/schemas/ErrorDto"
+                  }
+                }
+              }
+            },
+            "200": {
+              "description": "Successfully updated the product.",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/ProductDto"
                   }
                 }
               }
@@ -210,10 +210,10 @@
       "/products/{productId}": {
         "get": {
           "tags": [
-            "GET",
+            "Fetch product by its Id",
             "ProductController"
           ],
-          "summary": "Retrieves a product by its Id",
+          "summary": "Retrieves a product using its Id",
           "description": "Retrieves a single product from the database based on its unique identifier.",
           "operationId": "getProductById",
           "parameters": [
@@ -253,7 +253,7 @@
         },
         "delete": {
           "tags": [
-            "DELETE",
+            "Delete product",
             "ProductController"
           ],
           "summary": "Deletes a product by its Id.",
@@ -298,10 +298,10 @@
       "/products/sorted": {
         "get": {
           "tags": [
-            "GET",
+            "Fetch all products sorted by price",
             "ProductController"
           ],
-          "summary": "Retrieve all products sorted by price.",
+          "summary": "Retrieve all products in sorted order of price.",
           "description": "Retrieve all the products sorted by price in ascending order from the database.",
           "operationId": "getAllProductsSortedByPrice",
           "responses": {
@@ -321,10 +321,10 @@
       "/products/price/range/{lowerLimit}/{upperLimit}": {
         "get": {
           "tags": [
-            "GET",
+            "Fetch products within the price range",
             "ProductController"
           ],
-          "summary": "Retrieves products within the specified price range.",
+          "summary": "Retrieve products within the specified price range.",
           "description": "Retrieve all the products within the specified price range from the database.",
           "operationId": "getProductsByPriceRange",
           "parameters": [
